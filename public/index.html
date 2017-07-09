@@ -1,0 +1,158 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+       <link href="./css/style.css" type="text/css" rel="stylesheet">
+       <script src = "./scripts/angular.min.js"></script>
+       <title>CloudCraze Media Admin</title>
+</head>
+ <body ng-app= "cc-pda-app">
+     <br>
+     <table class="Page">
+          <tr>
+               <td>
+                    <table class="Head" cellspacing="0" cellpadding="0">
+                         <tr class="HeadTR">
+                              <td class="HeadLeft"></td>
+                              <td class="HeadMiddle">
+                                   CloudCraze Media Admin
+                              </td>
+                              <td class="HeadRight"></td>
+                         </tr>
+<!--      <tr>
+       <td>&nbsp;&nbsp; <a href="">Home</a>&nbsp;&nbsp; <a href="">About Us</a>&nbsp;&nbsp; <a href="">News</a>&nbsp;&nbsp; <a href="">Contact</a>&nbsp;&nbsp; <a href="">Links</a></td>
+       <td>&nbsp;</td>
+       <td style=" height: 20px; text-align: right; padding-right: 5px; ">
+       </td>
+      </tr>
+-->                 </table>
+               </td>
+          </tr>
+  
+     </table>
+  <table class="Main" cellpadding="0" cellspacing="0" ng-controller= "SalesforceController">
+   <tr class="MainTDR">
+    <td class="MainTopLeft"></td>
+    <td>&nbsp;</td>
+    <td class="MainTopRight"></td>
+   </tr>
+   <tr class="MainTDR">
+    <td>&nbsp;</td>
+    <td class="MainTDR">
+      <h2>Select the Salesforce Environment</h2>
+     <p>Select a salesforce environment as the target for Product Media Objects or enter a new environment. Check the connection by clicking Test.</p>
+    </td>
+    <td>&nbsp;</td>
+   <tr class="MainTDR" ng-repeat = "env in envs">
+      <td class="MainBottomLeft">&nbsp;</td>
+      <td>{{env.username}} {{env.type}} <button type="button">Select</button><button type="button">Edit</button><button type="button">Test</button><button type="button">Remove</button></td>
+      <td class="MainBottomRight">&nbsp;</td>     
+   </tr>
+   <tr class="MainTDR">
+      <td class="MainBottomLeft">&nbsp;</td>
+      <td>
+        <div ng-controller='modalCtrl'>
+          <button ng-click='toggleModal()'>Add Target Salesforce Environment</button>
+          <modal-dialog show='modalShown' width='400px' height='60%'>
+            <p>Modal Content Goes here<p>
+          </modal-dialog>
+        </div>
+      </td>
+      <td class="MainBottomRight">&nbsp;</td>     
+   </tr>
+  </table>
+
+
+<!--
+  <br>
+  <table class="Bottom" cellpadding="0" cellspacing="0">
+   <tr valign="top">
+    <td class="BottomTD">
+     <h2>
+Select the Salesforce Environment
+     </h2>
+     <p>
+      Select a salesforce environment as the target for Product Media Objects or enter a new environment. Check the connection by clicking Test.
+     </p>
+    </td>
+    <td class="BottomMiddleTD">&nbsp;</td>
+    <td class="BottomTD">
+     <h2>
+      Where can I get some?
+     </h2>
+     <p>
+There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.</p>
+    </td>
+   </tr>
+  </table>
+  <table class="Footer" cellpadding="0" cellspacing="0">
+   <tr>
+    <td class="FooterTD">
+
+     <p>&nbsp;</p>
+     <p>&nbsp;</p>
+     <p>
+      <a href="">Home</a> &nbsp;|&nbsp; <a href="">About Us</a> &nbsp;|&nbsp; <a href="">News</a>  &nbsp;|&nbsp; <a href="">Contact</a>  &nbsp;|&nbsp; <a href="">Links</a>
+     </p>
+
+    </td>
+   </tr>
+  </table>
+
+-->
+ <!-- Designed by DreamTemplate. Please leave link unmodified. -->
+<br><center><a href="http://www.dreamtemplate.com" title="Website Templates" target="_blank">Website templates</a></center>
+
+
+  <script>
+    angular.module("cc-pda-app", []) 
+    .controller("SalesforceController", function($scope, $http) {
+      $scope.envs = [];
+      init = function () {
+        /* get list of saleforce environments */
+
+        $http.get('http://127.0.0.1:8081/sfenvs').then( function(response) {
+                $scope.envs = response.data;       
+            });
+      } 
+
+      init();
+    });
+  </script>
+
+  <script>
+   angular.module('cc-pda-app')
+    .directive('modalDialog', function() {
+      return {
+        restrict: 'E',
+        scope: {
+          show: '='
+        },
+        replace: true, // Replace with the template below
+        transclude: true, // we want to insert custom content inside the directive
+        link: function(scope, element, attrs) {
+          scope.dialogStyle = {};
+          if (attrs.width)
+            scope.dialogStyle.width = attrs.width;
+          if (attrs.height)
+            scope.dialogStyle.height = attrs.height;
+          scope.hideModal = function() {
+            scope.show = false;
+          };
+        },
+        template: "<div class='ng-modal' ng-show='show'><div class='ng-modal-overlay' ng-click='hideModal()'></div><div class='ng-modal-dialog' ng-style='dialogStyle'><div class='ng-modal-close' ng-click='hideModal()'>X</div><div class='ng-modal-dialog-content' ng-transclude></div></div></div>"
+      };
+    });
+
+    angular.module("cc-pda-app") 
+    .controller('modalCtrl', ['$scope', function($scope) {
+      $scope.modalShown = false;
+      $scope.toggleModal = function() {
+        $scope.modalShown = !$scope.modalShown;
+      }; 
+    }]); 
+
+  </script>
+</body>
+</html>

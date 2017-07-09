@@ -1,0 +1,170 @@
+body { 
+	font-family: Tahoma;	
+	font-size: 12px; 
+	color: #000000; 
+	margin: 0px; 
+	background: url(../images/page_back.png) repeat-x; 
+	}
+img	{
+	border: 0px;
+	}
+a 	{ 
+	font-family: Tahoma; 
+	color: #27320E; 
+	text-decoration: none; 
+	}
+a:hover { 
+	color: #333333; 
+	}
+h2 	{ 
+	text-align: left; 
+	background: transparent; 
+	text-decoration: none; 
+	border-bottom: 1px #F2F1FA solid; 
+	font-weight: 500; 
+	color: #7EB52B;
+	}
+p 	{ 
+	color: #333333; 
+	padding: 0px;
+	} 
+hr 	{ 
+	border-top: 1px #F2F1FA dashed; 
+	border-bottom: none; 
+	border-right: none; 
+	border-left: none; 
+	}
+input { 
+	border: 1px #000000 solid; 
+	background: #F2F1FA;
+	}
+.Page { 
+	width: 76%; 
+	border: 0px; 
+	margin-left: 12%; 
+	padding: 0px; 
+	}
+.Head { 
+	width: 100%; 
+	border: 0px; 
+	}
+.HeadTR { 
+	background: url(../images/head_background.png); 
+	}
+.HeadLeft { 
+	width:62%; 
+	}
+.HeadMiddle {
+	text-align: right;
+	vertical-align: middle;
+	width: 36%;
+	font-size: 24px;
+	color: #333333;
+	}
+.HeadMiddle a { 
+	color: #FFFFFF;
+	text-decoration: none;
+	}
+.HeadMiddle a:hover { 
+	color: #CECECE;
+	text-decoration: none;
+	}
+.HeadRight { 
+	width: 2%; 
+	}
+.Main { 
+	width: 76%;  
+	border: 0; 
+	margin-left: 12%;
+	}
+.MainTDR {
+	background-color: #F3F7F5;
+	}
+.MainTopLeft { 
+	width: 1%; 
+	text-align: left; 
+	vertical-align: top; 
+	background: url(../images/corner_top_left.png); 
+	}
+.MainTopRight { 
+	width: 1%; 
+	text-align: right; 
+	vertical-align: top; 
+	background: url(../images/corner_top_right.png) no-repeat top right; 
+	}
+.MainBottomLeft { 
+	width: 1%; 
+	text-align: left; 
+	vertical-align: bottom; 
+	background: url(../images/corner_bottom_left.png) no-repeat bottom left; 
+	}
+.MainBottomRight { 
+	width: 1%; 
+	text-align: right; 
+	vertical-align: bottom; 
+	background: url(../images/corner_bottom_right.png) no-repeat bottom right; 
+	}
+.Bottom { 
+	width: 72%; 
+	border: 0px; 
+	margin-left: 15%; 
+	}
+.BottomTD { 
+	width: 40%; 
+	}
+.BottomMiddleTD { 
+	width: 5%; 
+	}
+.Footer { 
+	width: 60%; 
+	border: 0px; 
+	text-align: center; 
+	margin-left: 25%; 
+	}
+.FooterTD { 
+	text-align:center; 
+	}
+
+
+.ng-modal-overlay {
+  /* A dark translucent div that covers the whole screen */
+  position:absolute;
+  z-index:9999;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background-color:#000000;
+  opacity: 0.8;
+}
+.ng-modal-dialog {
+  /* A centered div above the overlay with a box shadow. */
+  z-index:10000;
+  position: absolute;
+  width: 50%; /* Default */
+
+  /* Center the dialog */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+
+  background-color: #fff;
+  box-shadow: 4px 4px 80px #000;
+}
+.ng-modal-dialog-content {
+  padding:10px;
+  text-align: left;
+}
+.ng-modal-close {
+  position: absolute;
+  top: 3px;
+  right: 5px;
+  padding: 5px;
+  cursor: pointer;
+  font-size: 120%;
+  display: inline-block;
+  font-weight: bold;
+  font-family: 'arial', 'sans-serif';
+}	
